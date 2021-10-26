@@ -5,6 +5,6 @@ omit = *migrations*,
        *test*,
        *admin*,
        ./manage.py,
-       ./crud/config/*,
-       ./crud/wsgi.py,
+       ./apps/config/*,
+       ./apps/wsgi.py,
        *__init__*

@@ -7,7 +7,7 @@ Simple CRUD prj with DRF. Check out the project's [documentation](http://shinjam
 
 # Prerequisites
 
-- [Docker](https://docs.docker.com/docker-for-mac/install/)  
+- [Docker](https://docs.docker.com/docker-for-mac/install/)
 
 # Local Development
 

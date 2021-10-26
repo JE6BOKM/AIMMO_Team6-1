@@ -5,7 +5,7 @@ import sys
 
 
 def main():
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "crud.config")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "apps.config")
     os.environ.setdefault("DJANGO_CONFIGURATION", "Local")
 
     try:
@@ -26,5 +26,5 @@ def main():
     execute_from_command_line(sys.argv)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
