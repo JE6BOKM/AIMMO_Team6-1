@@ -35,7 +35,9 @@ class Common(Configuration):
         # cors
         "corsheaders",
         # Your apps
-        "crud.users",
+        "apps.core",
+        "apps.users",
+        "apps.posts",
     )
     # CORS
     CORS_ALLOW_ALL_ORIGINS = (
@@ -77,9 +79,9 @@ class Common(Configuration):
     )
 
     ALLOWED_HOSTS = ["*"]
-    ROOT_URLCONF = "crud.urls"
+    ROOT_URLCONF = "apps.urls"
     SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
-    WSGI_APPLICATION = "crud.wsgi.application"
+    WSGI_APPLICATION = "apps.wsgi.application"
 
     # Email
     EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"

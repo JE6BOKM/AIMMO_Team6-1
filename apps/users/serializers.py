@@ -1,9 +1,11 @@
 from rest_framework import serializers
 
+from apps.core.serializers import DynamicFieldsSerializerMixin
+
 from .models import User
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(DynamicFieldsSerializerMixin, serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ("id", "username", "email")
