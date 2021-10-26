@@ -61,17 +61,33 @@ http://localhost:8001/
 ## Post API
 ### Retreive
 ```
-$ curl http://localhost:8000/api/v1/posts/
-```
-<details>
-<summary>response</summary>
+$ curl http://localhost:8000/api/v1/posts/?limit=3&offset=0
 
-```
 {
-    "count": 3,
-    "next": null,
+    "count": 5,
+    "next": "http://localhost:8000/api/v1/posts/?limit=3&offset=3",
     "previous": null,
     "results": [
+        {
+            "id": 8,
+            "author": {
+                "username": "guest2",
+                "email": "guest2@guest.com"
+            },
+            "title": "red title",
+            "content": "apple",
+            "created_at": "2021-10-26T15:42:25+0000"
+        },
+        {
+            "id": 7,
+            "author": {
+                "username": "guest2",
+                "email": "guest2@guest.com"
+            },
+            "title": "blue title",
+            "content": "this is sky",
+            "created_at": "2021-10-26T15:41:46+0000"
+        },
         {
             "id": 6,
             "author": {
@@ -81,32 +97,16 @@ $ curl http://localhost:8000/api/v1/posts/
             "title": "sample title 3 edited",
             "content": "interesting3  wow",
             "created_at": "2021-10-26T13:50:51+0000"
-        },
-        {
-            "id": 2,
-            "author": {
-                "username": "guest1",
-                "email": "guest1@guest.com"
-            },
-            "title": "sample title 2",
-            "content": "interesting2",
-            "created_at": "2021-10-26T13:29:13+0000"
         }
     ]
 }
 ```
 
-</details>
-
 
 ### List
 ```
 $ curl http://localhost:8000/api/v1/posts/2/
-```
-<details>
-<summary>response</summary>
 
-```
 {
     "id": 2,
     "author": {
@@ -119,7 +119,6 @@ $ curl http://localhost:8000/api/v1/posts/2/
 }
 ```
 
-</details>
 
 ### Delete
 ```
@@ -129,34 +128,23 @@ $ curl -X DELETE http://localhost:8000/api/v1/posts/2/ -H "Authorization: Bearer
 ### Update
 ```
 $ curl -X PATCH http://localhost:8000/api/v1/posts/2/ -d '{"content": "edit"}' -H "Authorization: Bearer eajsdfj...asfdasd"
-```
-<details>
-<summary>response</summary>
 
-```
 {
     "title": "sample title 2",
     "content": "edit"
 }
 ```
 
-<d/etails>
-
 ### Create
 ```
 $ curl -X POST http://localhost:8000/api/v1/posts/ -d '{"title":"title", "content": "content"}' -H "Authorization: Bearer eajsdfj...asfdasd"
-```
-<details>
-<summary>response</summary>
-
-```
 
 {
     "title": "title",
     "content": "content"
 }
-
 ```
+
 
 <d/etails>
 
