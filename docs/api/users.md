@@ -5,17 +5,16 @@ Supports registering, viewing, and updating user accounts.
 
 **Request**:
 
-`POST` `/users/`
+`POST` `/api/v1/accounts/`
 
 Parameters:
 
 Name       | Type   | Required | Description
 -----------|--------|----------|------------
 username   | string | Yes      | The username for the new user.
-password   | string | Yes      | The password for the new user account.
-first_name | string | No       | The user's given name.
-last_name  | string | No       | The user's family name.
-email      | string | No       | The user's email address.
+email      | string | Yes      | The user's email address.
+password1  | string | Yes      | The user's given password.
+password2  | string | Yes      | The user's given confirm password.
 
 *Note:*
 
@@ -28,12 +27,15 @@ Content-Type application/json
 201 Created
 
 {
-  "id": "6d5f9bae-a31b-4b7b-82c4-3853eda2b011",
-  "username": "richard",
-  "first_name": "Richard",
-  "last_name": "Hendriks",
-  "email": "richard@piedpiper.com",
-  "auth_token": "132cf952e0165a274bf99e115ab483671b3d9ff6"
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM1NDM4MjUwLCJpYXQiOjE2MzUyNjU0NTAsImp0aSI6ImVlOTZiNTY4M2U3OTQ1ODRhZDQ1M2RlOGJmZWE2MDBiIiwidXNlcl9pZCI6Mzl9.yyjxWOM_sp5GxspQbL3uf3F88r2uH2yx6QwwDwW5YBQ",
+    "refresh_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYzNTg3MDI1MCwiaWF0IjoxNjM1MjY1NDUwLCJqdGkiOiIxNDU1MGJjNGNlYmU0ODU1YWVhOGU0NTUyMDExYzhhNyIsInVzZXJfaWQiOjM5fQ.psmub1EAfiyTZ9_RmKjX4C14duqji8CCQIPHxmifuEE",
+    "user": {
+        "pk": 39,
+        "username": "guest9",
+        "email": "guest9@guest.com",
+        "first_name": "",
+        "last_name": ""
+    }
 }
 ```
 

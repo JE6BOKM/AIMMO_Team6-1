@@ -1,13 +1,9 @@
 # crud-drf
 
-[![Build Status](https://travis-ci.org/shinjam/crud-drf.svg?branch=master)](https://travis-ci.org/shinjam/crud-drf)
-[![Built with](https://img.shields.io/badge/Built_with-Cookiecutter_Django_Rest-F7B633.svg)](https://github.com/agconti/cookiecutter-django-rest)
-
-Simple CRUD prj with DRF. Check out the project's [documentation](http://shinjam.github.io/crud-drf/).
-
 # Prerequisites
 
 - [Docker](https://docs.docker.com/docker-for-mac/install/)
+
 
 # Initialize the project
 

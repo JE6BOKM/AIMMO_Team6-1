@@ -37,7 +37,7 @@ services:
   documentation:
     restart: always
     build: ./
-    command: "mkdocs serve"
+    command: "mkdocs serve "
     volumes:
       - ./:/code
     ports:

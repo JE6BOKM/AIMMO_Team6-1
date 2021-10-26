@@ -4,9 +4,10 @@ repo_url: https://github.com/shinjam/crud-drf
 site_dir: site
 copyright: Copyright &copy; 2020, <a href="https://github.com/shinjam">shinjam</a>.
 dev_addr: 0.0.0.0:8001
-
+edit_uri: blob/main/docs/
 nav:
   - Home: 'index.md'
   - API:
     - Authentication: 'api/authentication.md'
     - Users: 'api/users.md'
+    - Posts: 'api/posts.md'
