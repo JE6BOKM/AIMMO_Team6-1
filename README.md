@@ -34,6 +34,21 @@
 
 - [Docker](https://docs.docker.com/docker-for-mac/install/)
 
+### Runserver with command line
+```
+$ pip install poetry
+$ poetry install
+$ export DJANGO_SECRET_KEY=49xq#g3=$7e
+$ export DATABASE_URL=postgres://localuser:password@localhost:5432/crud
+$ docker-compose up postgres
+$ poetry run python manage.py runserver
+```
+
+### Runserver with Docker
+```
+$ docker-compose up
+```
+
 
 ## Authentication
 Using JWT
