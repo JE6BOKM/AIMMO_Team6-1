@@ -1,12 +1,12 @@
 from rest_framework import viewsets
-from rest_framework.permissions import AllowAny, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
 from apps.comments.permissions import IsAuth, IsCreatorOrReadOnly
 from apps.core.serializers import ChooseSerializerClassMixin
 
-from .models import Comment
-from .serializers import CommentCUDSerializer, CommentSerializer
+from apps.comments.models import Comment
+from apps.comments.serializers import CommentCUDSerializer, CommentSerializer
 
 
 class CommentViewSet(ChooseSerializerClassMixin, viewsets.ModelViewSet):
@@ -21,15 +21,6 @@ class CommentViewSet(ChooseSerializerClassMixin, viewsets.ModelViewSet):
         "update": CommentCUDSerializer,
     }
     permission_classes = (IsCreatorOrReadOnly,)
-
-    def get_permissions(self):
-        if self.action in ["list", "retreive"]:
-            self.permission_classes = [AllowAny]
-        elif self.action in ["create"]:
-            self.permission_classes = [IsAuth]
-        elif self.action in ["destroy", "update"]:
-            self.permission_classes = [IsCreatorOrReadOnly]
-        return super().get_permissions()
 
     def get_queryset(self):
         qs = super().get_queryset()

@@ -1,8 +1,7 @@
 from rest_framework import serializers
-from rest_framework.fields import CurrentUserDefault
 
-from apps.users.serializers import UserSerializer
 from apps.comments.models import Comment
+from apps.users.serializers import UserSerializer
 
 
 class CommentSerializer(serializers.ModelSerializer):
