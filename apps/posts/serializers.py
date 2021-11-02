@@ -21,4 +21,4 @@ class PostCreateUpdateDestroySerializer(
 
     class Meta:
         model = Post
-        fields = ["author", "title", "content"]
+        fields = ["author", "id", "title", "content", "created_at"]
