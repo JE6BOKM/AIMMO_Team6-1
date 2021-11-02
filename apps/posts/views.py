@@ -6,7 +6,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticatedOrReadOnly
 from apps.core.serializers import ChooseSerializerClassMixin
 from apps.posts.permissons import IsAuthor
 
-from .models import Post
+from .models import Post, UserCount
 from .serializers import PostCreateUpdateDestroySerializer, PostSerializer
 
 
@@ -45,3 +45,13 @@ class PostViewSet(ChooseSerializerClassMixin, viewsets.ModelViewSet):
             return self.queryset
         queryset = self.queryset.filter(q)
         return queryset
+
+    def retrieve(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if UserCount.objects.filter(post=obj, user=request.user).exists():
+            return super().retrieve(request, *args, **kwargs)
+
+        UserCount.objects.create(post=obj, user=request.user)
+        obj.views += 1
+        obj.save(update_fields=["views"])
+        return super().retrieve(request, *args, **kwargs)
