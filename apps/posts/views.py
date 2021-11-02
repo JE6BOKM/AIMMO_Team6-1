@@ -29,6 +29,6 @@ class PostViewSet(ChooseSerializerClassMixin, viewsets.ModelViewSet):
         return super().get_permissions()
 
     def get_queryset(self):
-        category = self.request.GET['category']
+        category = self.request.GET["category"]
         queryset = self.queryset.filter(category__name=category)
         return queryset

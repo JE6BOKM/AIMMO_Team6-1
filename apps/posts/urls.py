@@ -1,5 +1,5 @@
 from rest_framework.routers import DefaultRouter
-from django.urls import path
+
 from apps.posts.views import PostViewSet
 
 app_name = "posts"
