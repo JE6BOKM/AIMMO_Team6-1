@@ -3,7 +3,7 @@ from datetime import timedelta
 from distutils.util import strtobool
 from os.path import join
 
-import dj_database_url
+# import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -17,10 +17,11 @@ INSTALLED_APPS = (
     "django.contrib.staticfiles",
     # Third party apps
     "rest_framework",  # utilities for rest apis
+    # 'rest_framework.authtoken',
     "django_filters",  # for filtering rest endpoints
     # dj-rest-auth
     "dj_rest_auth",  # for authentication
-    "rest_framework_simplejwt.token_blacklist",
+    # "rest_framework_simplejwt.token_blacklist",
     "dj_rest_auth.registration",
     # django-alauth
     "django.contrib.sites",
@@ -70,7 +71,7 @@ SIMPLE_JWT = {
 # dj-rest-auth
 SITE_ID = 1
 REST_AUTH_SERIALIZERS = {
-    "USER_DETAILS_SERIALIZER": "apps.users.serializers.UserSerializer"
+    "USER_DETAILS_SERIALIZER": "apps.users.serializers.UserSerializer",
 }
 
 # https://docs.djangoproject.com/en/2.0/topics/http/middleware/
@@ -95,16 +96,31 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 ADMINS = (("Author", "nevvjann@gmail.com"),)
 
-# Postgres
+# MongoDB
 DATABASES = {
-    "default": dj_database_url.config(
-        default=os.getenv(
-            "DATABASE_URL", "postgres://localuser:password@postgres:5432/crud"
-        ),
-        conn_max_age=int(os.getenv("POSTGRES_CONN_MAX_AGE", 600)),
-    )
+    "default": {
+        "ENGINE": "djongo",
+        "NAME": "test_mongodb",
+        "ENFORCE_SCHEMA": False,
+        "CLIENT": {
+            "host": "mongodb",
+            "port": 27017,
+            "username": "root",
+            "password": "1234",
+            "authSource": "admin",
+            "authMechanism": "SCRAM-SHA-1",
+        },
+        "LOGGING": {
+            "version": 1,
+            "loggers": {
+                "djongo": {
+                    "level": "DEBUG",
+                    "propagate": False,
+                }
+            },
+        },
+    }
 }
-
 # General
 APPEND_SLASH = False
 TIME_ZONE = "UTC"
@@ -240,3 +256,6 @@ REST_FRAMEWORK = {
         "dj_rest_auth.jwt_auth.JWTCookieAuthentication",
     ),
 }
+
+
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"

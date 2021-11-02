@@ -2,21 +2,34 @@ version: '3'
 
 
 volumes:
+  local_mongodb_data: {}
   local_postgres_data: {}
   local_postgres_data_backups: {}
 
 services:
-  postgres:
+  # postgres:
+  #   restart: always
+  #   image: postgres:13.1
+  #   container_name: postgres
+  #   volumes:
+  #     - local_postgres_data:/var/lib/postgresql/data:Z
+  #     - local_postgres_data_backups:/backups:z
+  #   env_file:
+  #     - ./.envs/.postgres
+  #   ports:
+  #     - "5432:5432"
+
+  mongodb:
     restart: always
-    image: postgres:13.1
-    container_name: postgres
+    image: mongo
+    container_name: "docker-mongodb"
     volumes:
-      - local_postgres_data:/var/lib/postgresql/data:Z
-      - local_postgres_data_backups:/backups:z
+      - local_mongodb_data:/data/db
     env_file:
-      - ./.envs/.postgres
+      - ./.envs/.mongodb
     ports:
-      - "5432:5432"
+      - "27017:27017"
+
 
   web:
     restart: always
@@ -24,15 +37,17 @@ services:
       - DJANGO_SECRET_KEY=local
     build: ./
     command: >
-      bash -c "python wait_for_postgres.py &&
-               ./manage.py migrate &&
+      bash -c "./manage.py migrate &&
                ./manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./:/code
     ports:
       - "8000:8000"
+    links:
+     - mongodb
     depends_on:
-      - postgres
+      - mongodb
+      # - postgres
 
   documentation:
     restart: always
