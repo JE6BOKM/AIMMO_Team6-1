@@ -68,6 +68,9 @@ SIMPLE_JWT = {
 
 # dj-rest-auth
 SITE_ID = 1
+REST_AUTH_SERIALIZERS = {
+    "USER_DETAILS_SERIALIZER": "apps.users.serializers.UserSerializer"
+}
 
 # https://docs.djangoproject.com/en/2.0/topics/http/middleware/
 MIDDLEWARE = (
@@ -130,7 +133,6 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": STATICFILES_DIRS,
-        "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
