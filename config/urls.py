@@ -4,19 +4,9 @@ from django.contrib import admin
 from django.urls import include, path, re_path, reverse_lazy
 from django.views.generic.base import RedirectView
 
-from rest_framework.routers import DefaultRouter
-
-from apps.posts.views import PostViewSet
-from apps.users.views import UserCreateViewSet, UserViewSet
-
-router = DefaultRouter()
-router.register(r"users", UserViewSet)
-router.register(r"users", UserCreateViewSet)
-router.register(r"posts", PostViewSet)
-
-api_v1_urls = router.urls
-
-api_v1_urls += [
+api_v1_urls = [
+    path("", include("apps.users.urls")),
+    path("", include("apps.posts.urls")),
     path("accounts/", include("dj_rest_auth.urls")),
     path("accounts/", include("dj_rest_auth.registration.urls")),
 ]
