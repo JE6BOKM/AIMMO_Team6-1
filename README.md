@@ -1,6 +1,6 @@
 <!-- PROJECT LOGO -->
 
-# [Assignment 1] 에이모. 
+# [Assignment 1] 에이모.
 
 
 
@@ -8,18 +8,18 @@
 
 ## About The Project
 
-유저 정보를 갖고 게시판을 다루는 프로젝트 입니다.  
-다음의 내용이 REST API로 구현되어 있습니다.  
-유저 생성과 로그인  
-게시글 생성, 수정, 삭제 및 게시글 카테고리 구분, 게시글 검색  
-댓글과 대댓글 생성, 수정, 삭제  
+유저 정보를 갖고 게시판을 다루는 프로젝트 입니다.
+다음의 내용이 REST API로 구현되어 있습니다.
+유저 생성과 로그인
+게시글 생성, 수정, 삭제 및 게시글 카테고리 구분, 게시글 검색
+댓글과 대댓글 생성, 수정, 삭제
 Unit Test
 
 <br>
 
 ## 배포 주소
 
-아래 URL을 사용하여 REST API 요청을 할 수 있습니다.  
+아래 URL을 사용하여 REST API 요청을 할 수 있습니다.
 
 http://ec2-3-37-216-214.ap-northeast-2.compute.amazonaws.com/api/v1/
 
@@ -88,7 +88,7 @@ http://ec2-3-37-216-214.ap-northeast-2.compute.amazonaws.com/api/v1/
 - 댓글과 대댓글을 읽어올 시 기본 10개의 limit 옵션이 적용되며 offset,limit parameter로 변경 가능합니다.
 
 ## Postman api document
-[Postman](https://documenter.getpostman.com/view/13670333/UVBzn9jz)  
+[Postman](https://documenter.getpostman.com/view/13670333/UVBzn9jz)
 
 <!-- GETTING STARTED -->
 
