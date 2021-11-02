@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.sessions.middleware import SessionMiddleware
 from django.test import RequestFactory
 
@@ -5,16 +6,22 @@ import pytest
 from dj_rest_auth.utils import jwt_encode
 from rest_framework.test import APIClient
 
-from apps.users.models import User
 from test.factories import UserFactory
 
 pytest_plugins = ["test.schema", "test.factories"]
 pytestmark = pytest.mark.django_db
 
+User = settings.AUTH_USER_MODEL
+
 
 @pytest.fixture
 def user() -> User:
-    user = UserFactory(name="testuser", eth_address=None, signature=None)
+    user = UserFactory(
+        username="test-user",
+        email="test-user@test.com",
+        password="1234",
+        has_posts=True,
+    )
     return user
 
 
