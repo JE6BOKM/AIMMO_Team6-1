@@ -6,8 +6,9 @@ copyright: Copyright &copy; 2020, <a href="https://github.com/shinjam">shinjam</
 dev_addr: 0.0.0.0:8001
 edit_uri: blob/main/docs/
 nav:
-  - Home: 'index.md'
+  - Home: "index.md"
   - API:
-    - Authentication: 'api/authentication.md'
-    - Users: 'api/users.md'
-    - Posts: 'api/posts.md'
+      - Authentication: "api/authentication.md"
+      - Users: "api/users.md"
+      - Posts: "api/posts.md"
+      - Comments: "api/comments.md"
