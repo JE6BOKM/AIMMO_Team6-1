@@ -11,11 +11,13 @@ class IsAuth(IsAuthenticated):
 
 class IsCreatorOrReadOnly(BasePermission):
     def has_object_permission(self, request, view, obj):
-        # only access object craeted user
+        # filter out anonymous user
+
         if request.user.is_authenticated:
             if request.method in SAFE_METHODS:
                 return True
             elif hasattr(obj, "user"):
+                # only access object craeted user
                 return obj.user.id == request.user.id
             return False
         else:

@@ -1,12 +1,10 @@
 from rest_framework import viewsets
-from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
-from apps.comments.permissions import IsAuth, IsCreatorOrReadOnly
-from apps.core.serializers import ChooseSerializerClassMixin
-
 from apps.comments.models import Comment
+from apps.comments.permissions import IsCreatorOrReadOnly
 from apps.comments.serializers import CommentCUDSerializer, CommentSerializer
+from apps.core.serializers import ChooseSerializerClassMixin
 
 
 class CommentViewSet(ChooseSerializerClassMixin, viewsets.ModelViewSet):
