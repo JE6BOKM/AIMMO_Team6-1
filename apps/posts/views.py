@@ -1,3 +1,5 @@
+from django.db.models import Q
+
 from rest_framework import viewsets
 from rest_framework.permissions import AllowAny, IsAuthenticatedOrReadOnly
 
@@ -29,6 +31,17 @@ class PostViewSet(ChooseSerializerClassMixin, viewsets.ModelViewSet):
         return super().get_permissions()
 
     def get_queryset(self):
-        category = self.request.GET["category"]
-        queryset = self.queryset.filter(category__name=category)
+        category = self.request.GET.get("category", None)
+        search = self.request.GET.get("search_word", None)
+        q = Q
+
+        if category and search:
+            q = Q(category__name=category) & Q(title__icontains=search)
+        elif category:
+            q = Q(category__name=category)
+        elif search:
+            q = Q(title__icontains=search)
+        else:
+            return self.queryset
+        queryset = self.queryset.filter(q)
         return queryset
