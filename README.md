@@ -60,11 +60,6 @@ Unit Test
 - Unit Test
 - 1000만건 이상의 데이터를 넣고 성능테스트 진행 결과 필요
 
-## Version
-
-- **Python**: 3.9
-- **DB**: Mongodb 5.0
-- **Django**: 3.2.8
 
 ## Built With
 
@@ -91,10 +86,11 @@ Unit Test
 - 댓글과 대댓글을 읽어올 시 기본 10개의 limit 옵션이 적용되며 offset,limit parameter로 변경 가능합니다.
 
 ## Postman api document
+[Postman](https://documenter.getpostman.com/view/13670333/UVBzn9jz)  
 
 <!-- GETTING STARTED -->
 
-## Getting Started
+## 실행 방법
 
 ### Prerequisites
 
@@ -132,7 +128,7 @@ http://localhost:8001/
 
 ## Endpoints
 
-### ENDPOINT
+### ENDPOINTS
 
 | Method | EndpointURL                        | Request Body                      | Remark                        |
 | :----: | ---------------------------------- | --------------------------------- | ----------------------------- |
