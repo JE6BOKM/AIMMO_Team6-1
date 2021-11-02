@@ -1,14 +1,12 @@
-# from rest_framework import pagination
-# from rest_framework.views import APIView
-from rest_framework import serializers, viewsets
+from rest_framework import viewsets
 from rest_framework.permissions import AllowAny, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 
-from apps.core.serializers import ChooseSerializerClassMixin
 from apps.comments.permissions import IsAuth, IsCreatorOnly
+from apps.core.serializers import ChooseSerializerClassMixin
 
 from .models import Comment
-from .serializers import CommentSerializer, CommentCUDSerializer
+from .serializers import CommentCUDSerializer, CommentSerializer
 
 
 class CommentViewSet(ChooseSerializerClassMixin, viewsets.ModelViewSet):
