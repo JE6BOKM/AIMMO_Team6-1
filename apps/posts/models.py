@@ -38,4 +38,4 @@ class UserCount(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, help_text="게시글 본 유저"
     )
-    post = models.ForeignKey("Post", on_delete=models.CASA)
+    post = models.ForeignKey("Post", on_delete=models.CASCADE)
