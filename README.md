@@ -1,16 +1,8 @@
 <!-- PROJECT LOGO -->
-<br />
-<p align="center">
 
-  <h3 align="center">[Assignment 1] 에이모</h3>
+#[Assignment 1] 에이모. 
 
-  <p align="center">
-    
-    <br />
-    <br />
-    <br />
-  </p>
-</p>
+
 
 <!-- ABOUT THE PROJECT -->
 
@@ -114,7 +106,7 @@ Unit Test
 $ docker-compose up
 ```
 
-## Authentication
+### Authentication
 
 Using JWT
 
@@ -138,7 +130,7 @@ $ docker-compose up
 http://localhost:8001/
 ```
 
-# Endpoints
+## Endpoints
 
 ### ENDPOINT
 
