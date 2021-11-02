@@ -71,6 +71,9 @@ class Common(Configuration):
 
     # dj-rest-auth
     SITE_ID = 1
+    REST_AUTH_SERIALIZERS = {
+        "USER_DETAILS_SERIALIZER": "apps.users.serializers.UserSerializer"
+    }
 
     # https://docs.djangoproject.com/en/2.0/topics/http/middleware/
     MIDDLEWARE = (
