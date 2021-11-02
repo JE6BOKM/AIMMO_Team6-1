@@ -35,6 +35,7 @@ INSTALLED_APPS = (
     "apps.core",
     "apps.users",
     "apps.posts",
+    "apps.comments",
 )
 # CORS
 CORS_ALLOW_ALL_ORIGINS = (
