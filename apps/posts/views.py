@@ -27,3 +27,8 @@ class PostViewSet(ChooseSerializerClassMixin, viewsets.ModelViewSet):
         elif self.action in ["destroy", "update"]:
             self.permission_classes = [IsAuthor]
         return super().get_permissions()
+
+    def get_queryset(self):
+        category = self.request.GET['category']
+        queryset = self.queryset.filter(category__name=category)
+        return queryset
