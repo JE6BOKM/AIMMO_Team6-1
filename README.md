@@ -19,7 +19,9 @@ Unit Test
 
 ## 배포 주소
 
-아래 URL을 사용하여 REST API 요청을 할 수 있습니다.
+아래 URL을 사용하여 REST API 요청을 할 수 있습니다.  
+
+http://ec2-3-37-216-214.ap-northeast-2.compute.amazonaws.com/api/v1/
 
 <br>
 
