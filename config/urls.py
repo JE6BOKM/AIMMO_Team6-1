@@ -4,7 +4,16 @@ from django.contrib import admin
 from django.urls import include, path, re_path, reverse_lazy
 from django.views.generic.base import RedirectView
 
-api_v1_urls = [
+from rest_framework.routers import DefaultRouter
+
+from apps.comments.views import CommentViewSet
+
+router = DefaultRouter()
+router.register(r"comments", CommentViewSet)
+
+api_v1_urls = router.urls
+
+api_v1_urls += [
     path("", include("apps.users.urls")),
     path("", include("apps.posts.urls")),
     path("accounts/", include("dj_rest_auth.urls")),
