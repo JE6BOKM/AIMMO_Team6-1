@@ -123,7 +123,7 @@ $ docker-compose up
 ## API Document
 
 ```
-http://localhost:8001/
+http://ec2-3-37-216-214.ap-northeast-2.compute.amazonaws.com:8001/
 ```
 
 ## Endpoints
