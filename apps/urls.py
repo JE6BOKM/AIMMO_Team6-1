@@ -6,6 +6,7 @@ from django.views.generic.base import RedirectView
 
 from rest_framework.routers import DefaultRouter
 
+from apps.comments.views import CommentViewSet
 from apps.posts.views import PostViewSet
 
 from .users.views import UserCreateViewSet, UserViewSet
@@ -14,6 +15,7 @@ router = DefaultRouter()
 router.register(r"users", UserViewSet)
 router.register(r"users", UserCreateViewSet)
 router.register(r"posts", PostViewSet)
+router.register(r"comments", CommentViewSet)
 
 api_v1_urls = router.urls
 
