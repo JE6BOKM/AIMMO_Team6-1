@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework.fields import CurrentUserDefault
 
 from apps.users.serializers import UserSerializer
 from apps.comments.models import Comment
@@ -29,7 +30,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class CommentCUDSerializer(serializers.ModelSerializer):
-    user = UserSerializer(fields=["id", "username", "email"])
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
     class Meta:
         model = Comment

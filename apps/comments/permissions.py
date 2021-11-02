@@ -1,4 +1,4 @@
-from rest_framework.permissions import BasePermission, IsAuthenticated
+from rest_framework.permissions import SAFE_METHODS, BasePermission, IsAuthenticated
 
 
 class IsAuth(IsAuthenticated):
@@ -9,11 +9,13 @@ class IsAuth(IsAuthenticated):
         return is_authenticated
 
 
-class IsCreatorOnly(BasePermission):
+class IsCreatorOrReadOnly(BasePermission):
     def has_object_permission(self, request, view, obj):
-        # filter out anonymous user
+        # only access object craeted user
         if request.user.is_authenticated:
-            if hasattr(obj, "user"):
+            if request.method in SAFE_METHODS:
+                return True
+            elif hasattr(obj, "user"):
                 return obj.user.id == request.user.id
             return False
         else:
