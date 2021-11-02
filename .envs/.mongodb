@@ -1,4 +1,4 @@
-MONGO_HOST=mongodb # https://stackoverflow.com/questions/64618767/issue-with-connecting-to-mongodb-docker-container-with-another-container
+MONGO_HOST=mongodb
 MONGO_PORT=27017
 MONGO_INITDB_ROOT_USERNAME=root
 MONGO_INITDB_ROOT_PASSWORD=1234
