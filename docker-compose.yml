@@ -1,5 +1,4 @@
-version: '3'
-
+version: "3"
 
 volumes:
   local_mongodb_data: {}
@@ -18,6 +17,15 @@ services:
   #     - ./.envs/.postgres
   #   ports:
   #     - "5432:5432"
+  nginx:
+    image: nginx
+    container_name: nginx
+    ports:
+      - "80:80/tcp"
+    volumes:
+      - /home/ubuntu/config/nginx:/etc/nginx/conf.d
+    depends_on:
+      - web
 
   mongodb:
     restart: always
@@ -30,11 +38,11 @@ services:
     ports:
       - "27017:27017"
 
-
   web:
     restart: always
     environment:
       - DJANGO_SECRET_KEY=local
+      - DJANGO_DEBUG=False
     build: ./
     command: >
       bash -c "./manage.py migrate &&
@@ -44,7 +52,7 @@ services:
     ports:
       - "8000:8000"
     links:
-     - mongodb
+      - mongodb
     depends_on:
       - mongodb
       # - postgres
