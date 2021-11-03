@@ -6,17 +6,15 @@ volumes:
   local_postgres_data_backups: {}
 
 services:
-  # postgres:
-  #   restart: always
-  #   image: postgres:13.1
-  #   container_name: postgres
-  #   volumes:
-  #     - local_postgres_data:/var/lib/postgresql/data:Z
-  #     - local_postgres_data_backups:/backups:z
-  #   env_file:
-  #     - ./.envs/.postgres
-  #   ports:
-  #     - "5432:5432"
+  nginx:
+    image: nginx
+    container_name: nginx
+    ports:
+      - "80:80/tcp"
+    volumes:
+      - /home/ubuntu/config/nginx:/etc/nginx/conf.d
+    depends_on:
+      - web
 
   mongodb:
     restart: always
@@ -37,7 +35,7 @@ services:
     build: ./
     command: >
       bash -c "./manage.py migrate &&
-                ./manage.py runserver 0.0.0.0:8000"
+                gunicorn config.wsgi:application --bind 0.0.0.0:8000"
     volumes:
       - ./:/code
     ports:
@@ -46,7 +44,6 @@ services:
       - mongodb
     depends_on:
       - mongodb
-      # - postgres
 
   documentation:
     restart: always
